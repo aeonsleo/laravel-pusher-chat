@@ -12,15 +12,18 @@
             overflow-y: auto;
             max-height: 200px;
         }
+        #app {
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row" id="app">
-            <div class="col-md-3 offset-4">
+            <div class="col-md-6 offset-2">
                 <li class="list-group-item active">Chat Room</li>
                 <ul class="list-group" v-chat-scroll>
-                    <message v-for="value in chat.messages" :key="value.index" color="warning">
+                    <message v-for="(value,index) in chat.messages" :key="value.index" :color="chat.color[index]" :user="chat.users[index]">
                         @{{ value }}
                     </message>
                 </ul>
